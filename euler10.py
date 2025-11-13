@@ -6,9 +6,10 @@ def sieve_of_eratosthenes(limit):
         if is_prime[i]:
             for j in range(i*i, limit, i):
                 is_prime[j] = False
-    return sum(i for i in range(limit) if is_prime[i])
 
-result = sieve_of_eratosthenes(200000)
+    return sum(i for i in range(limit) if is_prime[i]), sum(is_prime)
+
+result = sieve_of_eratosthenes(2000000)
 print(result)
 
 

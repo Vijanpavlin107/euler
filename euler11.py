@@ -1,4 +1,4 @@
-#moja resitev
+
 
 #scrapanje iz weba
 import requests
@@ -26,16 +26,33 @@ for row in rows:
 #input mora biti seznam seznamov - matrika
 def max_prod_4(mat):
     max_prod = 0
-    dimenzija = int(sqrt(len(mat) * len(mat[0])))
-    for vrstica in mat:
-        for i in range(0, dimenzija - 4):
-            produkt = prod([vrstica[j] for j in range(i, i + 4)])
-            max_prod = produkt if produkt > max_prod else max_prod
-        
-        for k in range(0, dimenzija-4):
-            for l in range(0, dimenzija-4):
-                produkt = prod([mat[h,k] for h in range(l,l+4)])
-                max_prod = produkt if produkt > max_prod else max_prod
+    vrstice = len(mat)
+    stolpci = len(mat[0])
+
+    #Horizontal
+    for r in range(vrstice):
+        for i in range(stolpci - 3):
+            produkt = prod(mat[r][i:i+4])
+            max_prod = max(max_prod, produkt)
+    
+    #Vertical
+    for s in range(vrstice - 3):
+        for r in range(stolpci):
+            produkt = prod(mat[s+i][r] for i in range(4))
+            max_prod = max(max_prod, produkt)
+
+    #Diagonalno L-D
+    for s in range(stolpci - 3):
+        for r in range(vrstice - 3):
+            produkt = prod(mat[s+i][r+i] for i in range(4))
+            max_prod = max(max_prod, produkt)
+
+
+    #Diagonalno D-L
+    for s in range(3,stolpci):
+        for r in range(vrstice-3):
+            produkt = prod(mat[r+i][s-i] for i in range(4))
+            max_prod = max(produkt, max_prod)
 
     print(max_prod)
 

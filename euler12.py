@@ -64,7 +64,9 @@ def faktorizationation(n):
 
 
 def st_deiteljev(x):
+    print(x)
     return math.prod([i[0] + 1 for i in x])
+
 
 x = 2
 while True:

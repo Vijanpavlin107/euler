@@ -1,7 +1,6 @@
-from tkinter import Y
+
 import requests
 from bs4 import BeautifulSoup
-import soupsieve
 
 url = "https://projecteuler.net/problem=13"
 
@@ -19,10 +18,13 @@ nums = soup.select_one("div.monospace.center")
 #     print(nums.get_text)
 
 nums = str(nums)
-stevila = nums.strip()
-stevila = stevila.split("\n")
-stevila = stevila[1:]
+stevila_raw = nums.strip()
+stevila_raw = stevila_raw.split("\n")
+stevila_raw = stevila_raw[1:]
+stevila = [int(i[:50]) for i in stevila_raw]
 
-print(stevila)
+# print(len(stevila)) #tocni podatki
 
+sestevek = sum(stevila)
 
+print(str(sestevek)[:10])

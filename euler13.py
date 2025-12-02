@@ -27,4 +27,4 @@ stevila = [int(i[:50]) for i in stevila_raw]
 
 sestevek = sum(stevila)
 
-print(str(sestevek)[:10])
+print(str(sestevek)[:10]) #pravilno

@@ -9,7 +9,7 @@ def next_in_colatz(x):
 
 
 def len_colatz(n):
-    intial_num = n
+    initial_num = n
     dolzina = 0
     while n != 1:
         if n in spomin:
@@ -19,22 +19,24 @@ def len_colatz(n):
             n = next_in_colatz(n)
             dolzina += 1
     
-    spomin[intial_num] = dolzina
-    return dolzina
+    spomin[initial_num] = dolzina
+    return (initial_num, dolzina)
 
 
 spomin = {1:1, 2:2}
 
-# najdaljsa_dolzina = 0
-# najvecje_stevilo = 1
-
-# for i in range(1, 1000001):
-#     dolzina = len_colatz(i)
-#     if dolzina > najdaljsa_dolzina:
-#         najdaljsa_dolzina = dolzina
-#         najvecje_stevilo = i
-    
 
 #morem implementirat cachanje
+naj_dolzina = 1
+naj_stevilo = 1
 
-print(len_colatz(1000000))
+# rez = len_colatz(234)
+# print(type(rez[0]))
+
+for i in range(1000001):
+    rez = len_colatz(i)
+    if rez[1] > naj_dolzina:
+        naj_dolzina = rez[1]
+        naj_stevilo = rez[0]
+
+print(naj_dolzina, naj_stevilo)

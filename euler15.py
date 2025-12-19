@@ -33,14 +33,14 @@
 #sledi da se da vse poti zapisati kot pozicije premikov dol / desno izmed 2n skupnih premikov
 #to se izracuna: 2n! / (n! * n!)
 
-def factorial(n):
+def factorial(n, m=1):
     num = 1
-    for i in range(1, n+1):
+    for i in range(m + 1, n+1):
         num *= i
     return num
 
 def stevilo_moznih_poti(dim):
-    izraz = factorial(dim * 2) / (factorial(dim)^2)
+    izraz = factorial(dim * 2, dim) / (factorial(dim))
     return izraz
 
 print(stevilo_moznih_poti(20))

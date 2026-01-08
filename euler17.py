@@ -32,9 +32,6 @@ relacije = [
     relations_hundreds
 ]
 
-#for every ten there are 10 options totaling whatever amount of chars there are untill the ones times 10 plus the sum off all the options
-sestevek_enic = sum(relations_ones.values())
-
 #sestavim funkcijo ki za dano stevilo presteje stevilo znakov 
 def stevilo_znakov(n):
     if n > 1000:
@@ -42,7 +39,14 @@ def stevilo_znakov(n):
     if n == 1000:
         return 8
     
-    l = 1
-    while l < 3:
-        
+    stevilo = 0
+    for l in range(1,len(str(n)) + 1):
+        enota = n % 10
+        stevilo += relacije[-l][enota]
+        n = n//10
+        print(l, enota, relacije[l][enota])
     
+    return stevilo
+        
+
+print(stevilo_znakov(111))
